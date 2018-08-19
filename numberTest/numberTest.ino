@@ -1,4 +1,4 @@
-int clicks=0;
+int clicks=256;
 boolean bitToPush=true;
 boolean pushedOld= false;
 #define pushButton 3
@@ -16,15 +16,7 @@ void setup() {
 }
 
 void loop() {
-boolean pushed=digitalRead(pushButton);
-if (pushed!=pushedOld) {
-  if (pushed){
-  clicks++;
-  pushBit();
-  Serial.println(clicks,BIN);
-  }
-  pushedOld=pushed;
- }
+pushBit();
 delay(10);
 }
 
@@ -35,6 +27,6 @@ digitalWrite(latchPin,LOW);
  shiftOut(dataPin, clockPin, MSBFIRST, byteHigh);
  shiftOut(dataPin, clockPin, MSBFIRST, byteLow);
 digitalWrite(latchPin,HIGH);
-delay(20);
+delay(10);
 }
 
